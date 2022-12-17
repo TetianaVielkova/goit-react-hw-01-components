@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
+import styles from './FriendList.module.css';
+import classNames from 'classnames';
 
 export const FriendList = ({friends}) => {
     return(
-        <ul class="friend-list">
+        <ul className={styles.friendList}>
             {friends.map(({avatar, name, id, isOnline}) => (
-                <li key={id} class="item">
-                    <span class="status">{isOnline}</span>
-                    <img class="avatar" src={avatar} alt={name} width="48" />
-                    <p class="name">{name}</p>
-              </li>
+                <li key={id} className={styles.item}>
+                    <span className={classNames(isOnline ? styles.status : styles.statusOff)}></span>
+                    <img className={styles.avatar} src={avatar} alt={name} width="48" />
+                    <p className={styles.name}>{name}</p>
+                </li>
             ))}
         </ul>
     )
